@@ -6,12 +6,7 @@ export default function FunctionUI(props) {
       for (let i = 0; i < num; i++) {
          // render some JSX
          inputs.push(
-            <input
-               type="text"
-               className="form-control inline-action"
-               placeholder="string"
-               value="Somewhere Waldo is hiding in this text."
-            />
+            <input type="text" className="form-control inline-action" />
          );
       }
       return inputs;
@@ -20,13 +15,13 @@ export default function FunctionUI(props) {
    return (
       <div className="col-12 col-lg-8 offset-lg-2 mb-5">
          <p className="name">
-            <b>{props.ui.name}</b> - {props.ui.desc}
+            <b>{props.name}</b> - {props.desc}
          </p>
          <pre style={{ display: "none" }}>
             <code></code>
          </pre>
          <div className="actions float-right">
-            {renderInputs(props.ui.inputs)}
+            {renderInputs(props.inputs)}
             <button className="btn btn-primary inline-action">Run</button>
          </div>
          <div className="clearfix mb-3"></div>

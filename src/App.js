@@ -14,7 +14,13 @@ export default class App extends React.Component {
          <div className="container">
             <div className="row">
                {uiData.map((functionUI) => {
-                  return <FunctionUI ui={functionUI} />;
+                  return (
+                     <FunctionUI
+                        name={functionUI.name}
+                        desc={functionUI.desc}
+                        inputs={functionUI.inputs}
+                     />
+                  );
                })}
             </div>
          </div>
