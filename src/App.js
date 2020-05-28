@@ -2,6 +2,7 @@ import React from "react";
 import "./style/master.scss";
 import { uiData } from "./data/ui";
 import FunctionUI from "./components/FunctionUI";
+import orderBy from "lodash/orderBy";
 
 export default class App extends React.Component {
    constructor() {
@@ -10,10 +11,12 @@ export default class App extends React.Component {
    }
 
    render() {
+      const orderedData = orderBy(uiData, "onamerder", "desc");
+
       return (
          <div className="container">
             <div className="row">
-               {uiData.map((functionUI) => {
+               {orderedData.map((functionUI) => {
                   return (
                      <FunctionUI
                         name={functionUI.name}
