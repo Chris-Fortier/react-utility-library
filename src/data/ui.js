@@ -5,7 +5,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 100,
    },
    {
@@ -14,7 +14,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 101,
    },
    {
@@ -23,7 +23,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 102,
    },
    {
@@ -32,7 +32,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 103,
    },
    {
@@ -59,7 +59,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 106,
    },
    {
@@ -86,7 +86,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 109,
    },
    {
@@ -113,7 +113,7 @@ export const uiData = [
       inputs: 1,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 112,
    },
    {
@@ -131,7 +131,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 114,
    },
    {
@@ -194,7 +194,7 @@ export const uiData = [
       inputs: 3,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 121,
    },
    {
@@ -204,7 +204,7 @@ export const uiData = [
       inputs: 2,
       type: "basic",
       typeNum: 100,
-      isFavorite: false,
+      isFavorite: true,
       order: 122,
    },
    {
@@ -214,7 +214,7 @@ export const uiData = [
       inputs: 1,
       type: "intermediate",
       typeNum: 200,
-      isFavorite: false,
+      isFavorite: true,
       order: 200,
    },
    {
@@ -224,7 +224,7 @@ export const uiData = [
       inputs: 3,
       type: "intermediate",
       typeNum: 200,
-      isFavorite: false,
+      isFavorite: true,
       order: 201,
    },
    {
@@ -243,7 +243,7 @@ export const uiData = [
       inputs: 2,
       type: "intermediate",
       typeNum: 200,
-      isFavorite: false,
+      isFavorite: true,
       order: 203,
    },
    {
@@ -253,7 +253,7 @@ export const uiData = [
       inputs: 3,
       type: "intermediate",
       typeNum: 200,
-      isFavorite: false,
+      isFavorite: true,
       order: 204,
    },
    {
