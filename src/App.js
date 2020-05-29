@@ -17,19 +17,31 @@ export default class App extends React.Component {
 
    toggleFavorites(e) {
       this.setState({ isFavoritesChecked: !this.state.isFavoritesChecked }); // toggle isFavoritesChecked
-      const userInput = e.target.id; // get the id of what the user clicked on
-      console.log(userInput);
+      const isFavoritesChecked = document.getElementById("viewMode-favorites")
+         .checked; // get the id of what the user clicked on
+      console.log(isFavoritesChecked);
+      const searchInput = document.getElementById("search-input").value; // get the search input from the user
       const allFuncs = [...this.state.allFuncs]; // make a shallow copy of the array
-      if (userInput === "viewMode-favorites") {
+      if (isFavoritesChecked) {
          // if the user clicked on favorites
-         const filteredFuncs = allFuncs.filter((func) => {
+         const favoriteFuncs = allFuncs.filter((func) => {
             // filter only the favorite ones
             return func.isFavorite;
          });
-         console.log(filteredFuncs);
+         console.log(favoriteFuncs);
+         const filteredFuncs = favoriteFuncs.filter((func) => {
+            // filter only items whose name contains the search input
+            return func.name.indexOf(searchInput) >= 0;
+         });
+
          this.setState({ displayedFuncs: filteredFuncs }); // set the displayed functions to only the favorites
       } else {
-         this.setState({ displayedFuncs: allFuncs }); // set the displayed functions to all the functions
+         const filteredFuncs = allFuncs.filter((func) => {
+            // filter only items whose name contains the search input
+            return func.name.indexOf(searchInput) >= 0;
+         });
+
+         this.setState({ displayedFuncs: filteredFuncs }); // set the displayed functions to all the functions
       }
    }
 
