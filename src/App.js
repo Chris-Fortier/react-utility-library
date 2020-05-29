@@ -15,15 +15,17 @@ export default class App extends React.Component {
       };
    }
 
-   toggleFavorites(e) {
-      this.setState({ isFavoritesChecked: !this.state.isFavoritesChecked }); // toggle isFavoritesChecked
+   filterFuncs(e) {
       const isFavoritesChecked = document.getElementById("viewMode-favorites")
          .checked; // get the id of what the user clicked on
       console.log(isFavoritesChecked);
-      const searchInput = document.getElementById("search-input").value; // get the search input from the user
+      const searchInput = document
+         .getElementById("search-input")
+         .value.toLowerCase(); // get the search input from the user
       const allFuncs = [...this.state.allFuncs]; // make a shallow copy of the array
       if (isFavoritesChecked) {
          // if the user clicked on favorites
+         this.setState({ isFavoritesChecked: true }); // toggle isFavoritesChecked
          const favoriteFuncs = allFuncs.filter((func) => {
             // filter only the favorite ones
             return func.isFavorite;
@@ -31,14 +33,15 @@ export default class App extends React.Component {
          console.log(favoriteFuncs);
          const filteredFuncs = favoriteFuncs.filter((func) => {
             // filter only items whose name contains the search input
-            return func.name.indexOf(searchInput) >= 0;
+            return func.name.toLowerCase().indexOf(searchInput) >= 0;
          });
 
          this.setState({ displayedFuncs: filteredFuncs }); // set the displayed functions to only the favorites
       } else {
+         this.setState({ isFavoritesChecked: false }); // toggle isFavoritesChecked
          const filteredFuncs = allFuncs.filter((func) => {
             // filter only items whose name contains the search input
-            return func.name.indexOf(searchInput) >= 0;
+            return func.name.toLowerCase().indexOf(searchInput) >= 0;
          });
 
          this.setState({ displayedFuncs: filteredFuncs }); // set the displayed functions to all the functions
@@ -69,7 +72,7 @@ export default class App extends React.Component {
                         className="custom-control-input"
                         checked={!this.state.isFavoritesChecked}
                         onChange={(e) => {
-                           this.toggleFavorites(e);
+                           this.filterFuncs(e);
                         }} // onChange, call this function
                      />
                      <label
@@ -87,7 +90,7 @@ export default class App extends React.Component {
                         className="custom-control-input"
                         checked={this.state.isFavoritesChecked}
                         onChange={(e) => {
-                           this.toggleFavorites(e);
+                           this.filterFuncs(e);
                         }} // onChange, call this function
                      />
                      <label
@@ -107,6 +110,9 @@ export default class App extends React.Component {
                            aria-label="Search all functions"
                            aria-describedby="search-input"
                            id="search-input"
+                           onChange={(e) => {
+                              this.filterFuncs(e);
+                           }} // onChange, call this function
                         />
                      </div>
                      <div className="col-6">
