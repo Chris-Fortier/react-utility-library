@@ -10,9 +10,9 @@ export default class App extends React.Component {
       console.log(uiData);
       this.state = {
          isFavoritesChecked: false,
-         allFuncs: uiData,
-         displayedFuncs: uiData,
-         orderBy: "['name', 'desc']",
+         allFuncs: orderBy(uiData, "order", "desc"),
+         displayedFuncs: orderBy(uiData, "order", "desc"),
+         orderBy: '["order", "desc"]',
       };
    }
 
@@ -35,22 +35,27 @@ export default class App extends React.Component {
             // filter only items whose name contains the search input
             return func.name.toLowerCase().indexOf(searchInput) >= 0;
          });
-         const orderedFuncs = orderBy(filteredFuncs, "name", "desc");
-         this.setState({ displayedFuncs: orderedFuncs }); // set the displayed functions to only the favorites
+         const orderArr = JSON.parse(this.state.orderBy);
+         console.log("orderArr:", ...orderArr);
+         const orderedFuncs = orderBy(filteredFuncs, ...orderArr);
+         this.setState({ displayedFuncs: orderedFuncs }); // set the displayed functions to all the functions
       } else {
          this.setState({ isFavoritesChecked: false }); // toggle isFavoritesChecked
          const filteredFuncs = allFuncs.filter((func) => {
             // filter only items whose name contains the search input
             return func.name.toLowerCase().indexOf(searchInput) >= 0;
          });
-         const orderedFuncs = orderBy(filteredFuncs, this.state.orderBy);
+         const orderArr = JSON.parse(this.state.orderBy);
+         console.log("orderArr:", ...orderArr);
+         const orderedFuncs = orderBy(filteredFuncs, ...orderArr);
          this.setState({ displayedFuncs: orderedFuncs }); // set the displayed functions to all the functions
       }
    }
 
-   changeOrder(e){
-      this.setState({orderBy: e.target.value});
-      this.filterFuncs();
+   changeOrder(e) {
+      this.setState({ orderBy: e.target.value }, () => {
+         this.filterFuncs();
+      });
    }
 
    render() {
@@ -121,11 +126,15 @@ export default class App extends React.Component {
                         />
                      </div>
                      <div className="col-6">
-                        <select value={this.state.orderBy} className="form-control" onChange={(e)=>this.changeOrder(e)}>
-                           <option value = "['order','desc']">Most recent</option>
-                           <option value = "['order','asc']">Oldest</option>
-                           <option value = "['name', 'asc']">A - Z</option>
-                           <option value = "['name', 'desc']">Z - A</option>
+                        <select
+                           value={this.state.orderBy}
+                           className="form-control"
+                           onChange={(e) => this.changeOrder(e)}
+                        >
+                           <option value='["order","desc"]'>Most recent</option>
+                           <option value='["order","asc"]'>Oldest</option>
+                           <option value='["name", "asc"]'>A - Z</option>
+                           <option value='["name", "desc"]'>Z - A</option>
                         </select>
                      </div>
                   </div>
