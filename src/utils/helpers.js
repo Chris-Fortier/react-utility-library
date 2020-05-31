@@ -22,17 +22,21 @@ const isObject = (value) => {
 
 const convertDataType = (str) => {
    // takes a string and interprets it into a different data type
-   // one-lining these makes it easier to read in this case
-   if (str === "null") return null;
+
    if (str === "undefined") return undefined;
-   if (str.toLowerCase() === "true") return true;
-   if (str.toLowerCase() === "false") return false;
-   // eslint-disable-next-line
-   if (str == Number(str)) return Number(str);
-   const parsedJSON = safelyParseJSON(str);
-   if (Array.isArray(parsedJSON)) return parsedJSON;
-   if (isObject(parsedJSON)) return parsedJSON; // I think isObject(str) needs to be isObject(safelyParseJSON(str))
-   return str;
+   return safelyParseJSON(str);
+
+   // one-lining these makes it easier to read in this case
+   // if (str === "null") return null;
+   // if (str === "undefined") return undefined;
+   // if (str.toLowerCase() === "true") return true;
+   // if (str.toLowerCase() === "false") return false;
+   // // eslint-disable-next-line
+   // if (str == Number(str)) return Number(str);
+   // const parsedJSON = safelyParseJSON(str);
+   // if (Array.isArray(parsedJSON)) return parsedJSON;
+   // if (isObject(parsedJSON)) return parsedJSON; // I think isObject(str) needs to be isObject(safelyParseJSON(str))
+   // return str;
 };
 
 export { isObject, convertDataType, safelyParseJSON };
