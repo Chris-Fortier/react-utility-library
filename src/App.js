@@ -131,8 +131,12 @@ export default class App extends React.Component {
                            className="form-control"
                            onChange={(e) => this.changeOrder(e)}
                         >
-                           <option value='["order","desc"]'>Most recent</option>
-                           <option value='["order","asc"]'>Oldest</option>
+                           <option value='["order","desc"]'>
+                              Newest on Top
+                           </option>
+                           <option value='["order","asc"]'>
+                              Oldest on Top
+                           </option>
                            <option value='["name", "asc"]'>A - Z</option>
                            <option value='["name", "desc"]'>Z - A</option>
                         </select>
