@@ -6,15 +6,23 @@ import orderBy from "lodash/orderBy";
 
 export default class App extends React.Component {
    constructor() {
-      super();
+      super(); // boilerplate line that needs to be in the constructor
       console.log(uiData);
+
+      // initialize state inside the constructor via this.state = {key: value, key: value,};
+      // set default state values for each component
+      // define a component's initial state
       this.state = {
          isFavoritesChecked: false,
          allFuncs: orderBy(uiData, "order", "desc"),
          displayedFuncs: orderBy(uiData, "order", "desc"),
          orderBy: '["order", "desc"]',
       };
+
+      // this.methodName = this.methodName.bind(this) // example boilerplate to bind this for each method
    }
+
+   // methods happen here, such as what happens when you click on a button
 
    filterFuncs(e) {
       const isFavoritesChecked = document.getElementById("viewMode-favorites")
@@ -59,6 +67,10 @@ export default class App extends React.Component {
    }
 
    render() {
+      // In the render() method, before the return statement,
+      // you can write JavaScript directly. For example, you could declare functions,
+      // access data from state or props, perform computations on this data, and so on.
+
       const getFunctionsNum = () => {
          return uiData.length;
       };
